@@ -3,6 +3,8 @@ package link
 import (
 	"io"
 	"fmt"
+
+	"golang.org/x/net/html"
 )
 
 // Link represents all the data available in an html link
