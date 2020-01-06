@@ -1,4 +1,4 @@
-package link_parser
+package link
 
 import (
 	"io"

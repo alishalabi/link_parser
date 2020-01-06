@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"../../../link_parser"
-	// "github.com/alishalabi/link_parser"
+	// "../../../link_parser"
+	"github.com/alishalabi/link_parser"
 )
 
 var exampleHtml = `
