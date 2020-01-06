@@ -2,6 +2,7 @@ package link
 
 import (
 	"io"
+	// "strings"
 	"fmt"
 
 	"golang.org/x/net/html"
