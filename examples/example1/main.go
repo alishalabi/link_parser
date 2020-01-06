@@ -19,6 +19,7 @@ var exampleHtml = `
 
 func main() {
 	r := strings.NewReader(exampleHtml)
+	fmt.Println(r)
 	links, err := link.Parse(r)
 	if err != nil {
 		panic(err)
