@@ -2,7 +2,7 @@ package main
 
 import (
 	"io"
-	// "strings"
+	"strings"
 	// "fmt"
 
 	"golang.org/x/net/html"
@@ -38,10 +38,33 @@ func buildLinkObject(n *html.Node) Link {
 			break
 		}
 	}
-	ret.Text = "TODO"
+	ret.Text = getText(n)
 	return ret
 }
 
+// getText extracts all text from a given node
+func getText(n *html.Node) string {
+	// Base Case: node is a text node -> return
+	if n.Type == html.TextNode {
+		return n.Data
+	}
+	// Base Case: node is not an element node -> skip
+	if n.Type != html.ElementNode {
+		return ""
+	}
+	// Varibale ret = return value
+	var ret string
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
+		ret += getText(c) + " "
+	}
+
+	// Formating (using string package), converting whitespace to slice,
+	// joining slice into string
+	return strings.Join(strings.Fields(ret), " ")
+}
+
+// anchorNodes recursively searches all nodes and
+// returns all anchor nodes
 func anchorNodes(n *html.Node) []*html.Node {
 	// If node is an element node, and that element is "a"
 	if n.Type == html.ElementNode && n.Data == "a" {

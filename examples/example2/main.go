@@ -5,7 +5,7 @@ import (
 	"strings"
 
 
-	// "github.com/alishalabi/link_parser"
+	"github.com/alishalabi/link_parser"
 )
 
 var exampleHtml = `
