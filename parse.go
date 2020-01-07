@@ -36,7 +36,7 @@ func anchorNodes(n *html.Node) []*html.Node {
 
 	// Varibale ret = return value
 	var ret []*html.Node
-	for c := n.FirstChilde; c != nil; c = c.NextSibling {
+	for c := n.FirstChild; c != nil; c = c.NextSibling {
 		ret = append(ret, anchorNodes(c)...)
 	}
 
