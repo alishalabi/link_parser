@@ -1,9 +1,8 @@
-package main
+package link
 
 import (
 	"io"
 	"strings"
-	// "fmt"
 
 	"golang.org/x/net/html"
 )
@@ -25,7 +24,6 @@ func Parse(r io.Reader) ([]Link, error) {
 	for _, node := range nodes {
 		links = append(links, buildLinkObject(node))
 	}
-	// dfs(doc, "")
 	return links, nil
 }
 
@@ -55,7 +53,7 @@ func getText(n *html.Node) string {
 	// Varibale ret = return value
 	var ret string
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
-		ret += getText(c) + " "
+		ret += getText(c)
 	}
 
 	// Formating (using string package), converting whitespace to slice,
@@ -79,17 +77,3 @@ func anchorNodes(n *html.Node) []*html.Node {
 
 	return ret
 }
-
-// DFS runs a depth first search of node content
-// Returning anchor tags
-// func dfs(n *html.Node, padding string) {
-// 	// Adding some tag stylings
-// 	msg := n.Data
-// 	if n.Type == html.ElementNode {
-// 		msg = "<" + msg + ">"
-// 	}
-// 	fmt.Println(padding, msg)
-// 	for c := n.FirstChild; c != nil; c = c.NextSibling {
-// 		dfs(c, padding + "   ")
-// 	}
-// }
