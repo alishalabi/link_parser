@@ -31,7 +31,7 @@ func Parse(r io.Reader) ([]Link, error) {
 func anchorNodes(n *html.Node) []*html.Node {
 	// If node is an element node, and that element is "a"
 	if n.type == html.ElementNode && n.Data == "a" {
-		return []*html.Node(n)
+		return []*html.Node{n}
 	}
 
 	// Varibale ret = return value
