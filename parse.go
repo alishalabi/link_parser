@@ -24,8 +24,14 @@ func Parse(r io.Reader) ([]Link, error) {
 	return nil, nil
 }
 
+// DFS runs a depth first search of node content
 func dfs(n *html.Node, padding string) {
-	fmt.Println(padding, n.Data)
+	// Adding some tag stylings
+	msg := n.Data 
+	if n.Type == html.ElementNode {
+		msg = "<" + msg + ">"
+	}
+	fmt.Println(padding, msg)
 	for c := n.FirstChild; c != nil; c = c.NextSibling {
 		dfs(c, padding + "   ")
 	}
