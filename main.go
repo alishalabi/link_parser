@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	// "../../../link_parser"
-	"github.com/alishalabi/link_parser"
+
+	// "github.com/alishalabi/link_parser"
 )
 
 var exampleHtml = `
@@ -19,7 +19,7 @@ var exampleHtml = `
 
 func main() {
 	r := strings.NewReader(exampleHtml)
-	links, err := link.Parse(r)
+	links, err := Parse(r)
 	if err != nil {
 		panic(err)
 	}

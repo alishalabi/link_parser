@@ -1,4 +1,4 @@
-package link
+package main
 
 import (
 	"io"
@@ -47,7 +47,7 @@ func anchorNodes(n *html.Node) []*html.Node {
 // Returning anchor tags
 // func dfs(n *html.Node, padding string) {
 // 	// Adding some tag stylings
-// 	msg := n.Data 
+// 	msg := n.Data
 // 	if n.Type == html.ElementNode {
 // 		msg = "<" + msg + ">"
 // 	}
