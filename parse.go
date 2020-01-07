@@ -3,7 +3,7 @@ package main
 import (
 	"io"
 	// "strings"
-	"fmt"
+	// "fmt"
 
 	"golang.org/x/net/html"
 )
@@ -21,11 +21,25 @@ func Parse(r io.Reader) ([]Link, error) {
 		return nil, err
 	}
 	nodes := anchorNodes(doc)
+	var links []Link
 	for _, node := range nodes {
-		fmt.Println(node)
+		links = append(links, buildLinkObject(node))
 	}
 	// dfs(doc, "")
-	return nil, nil
+	return links, nil
+}
+
+func buildLinkObject(n *html.Node) Link {
+	// Varibale ret = return value
+	var ret Link
+	for _, attr := range n.Attr {
+		if attr.Key == "href" {
+			ret.Href = attr.Val
+			break
+		}
+	}
+	ret.Text = "TODO"
+	return ret
 }
 
 func anchorNodes(n *html.Node) []*html.Node {
